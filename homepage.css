@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+body {
+  background-color: #0d0d0d;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.container {
+  position: relative;
+}
+
+/* Glitch Text */
+.glitch {
+  font-size: 3rem;
+  font-weight: bold;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: white;
+  animation: flicker 2s infinite alternate;
+}
+
+/* First Glitch Layer */
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+  background: transparent;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+/* Red Offset */
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 red;
+  animation: glitchMove 0.3s infinite alternate-reverse;
+}
+
+/* Blue Offset */
+.glitch::after {
+  left: -2px;
+  text-shadow: 2px 0 blue;
+  animation: glitchMove2 0.25s infinite alternate-reverse;
+}
+
+/* Flickering Effect */
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Randomized Glitch Movement */
+@keyframes glitchMove {
+  0% {
+    clip: rect(10px, 9999px, 50px, 0);
+    transform: skew(2deg);
+  }
+  50% {
+    clip: rect(50px, 9999px, 90px, 0);
+    transform: skew(-3deg);
+  }
+  100% {
+    clip: rect(90px, 9999px, 130px, 0);
+    transform: skew(1deg);
+  }
+}
+
+@keyframes glitchMove2 {
+  0% {
+    clip: rect(20px, 9999px, 60px, 0);
+    transform: skew(-2deg);
+  }
+  50% {
+    clip: rect(60px, 9999px, 100px, 0);
+    transform: skew(3deg);
+  }
+  100% {
+    clip: rect(100px, 9999px, 140px, 0);
+    transform: skew(-1deg);
+  }
+}
+
+.subtitle {
+    font-size: 1rem;
+    margin-top: 6px;
+    opacity: 0.7;
+    font-family: 'Orbitron';
+    font-weight: 400;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 3rem;
+    padding: .5rem 1rem;
+    background-color: #7f1d1d;
+    color: white;
+    font-family: monospace;
+    font-weight: bold;
+    font-family: 'DM SANS';
+    font-size: 1rem;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #7F1D1DCC;
+}
